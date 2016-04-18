@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  VLAppDelegate.h
 //  UtilBar
 //
 //  Created by Vitaly on 4/16/16.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface VLAppDelegate : NSObject <NSApplicationDelegate>
 
 
 @end
