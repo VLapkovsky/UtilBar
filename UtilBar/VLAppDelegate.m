@@ -11,17 +11,28 @@
 @interface VLAppDelegate ()
 
 @property (strong, nonatomic) NSStatusItem *statusMenuBar;
+
 @end
 
 @implementation VLAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    
     self.statusMenuBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    self.statusMenuBar.title = @"*";
+    
+    NSImage *icon = [NSImage imageNamed:@"menu-icon"];
+    NSImage *highlightIcon =[NSImage imageNamed:@"menu-icon"]; // Using the exact same image asset.
+    [highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
+    
+    [[self statusMenuBar] setImage:icon];
+    [[self statusMenuBar] setAlternateImage:highlightIcon];
+    [[self statusMenuBar] setHighlightMode:YES];
     
     NSMenu *menu = [[NSMenu alloc] init];
     
-    NSMenuItem *actionShowAllFile = [[NSMenuItem alloc] initWithTitle: @"Show All Files" action: @selector(showHideAllFiles:) keyEquivalent: @""];
+    NSMenuItem *actionShowAllFile = [[NSMenuItem alloc] initWithTitle: @"Show All Files"
+                                                               action: @selector(showHideAllFiles:)
+                                                        keyEquivalent: @""];
     [actionShowAllFile setEnabled: YES];
     [actionShowAllFile setState: [self checkShowHideAllFiles]];
     [menu addItem:actionShowAllFile];
